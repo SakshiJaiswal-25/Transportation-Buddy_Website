@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="{%static  'transportapp/images/Logo.png'%}">
+    <style>
+        .bg{
+            background-image: url("{%static  'transportapp/images/trucks/home.jpg'%}");
+            width: 100%;height: 700px
+        }
+    </style>
+    <script>
+        function checkLength()
+        {
+
+           // alert("in function")
+            did=document.getElementById("distance").value
+            //alert(did.length)
+            if(did.length >5)
+            {
+            alert("max 5 digits")
+            return false
+            }
+            return true
+
+        }
+    </script>
+</head>
+<body>
+   {%include "transportapp/html/common_header.html"%}
+   
+   <div class="bg">
+    <!-- <img src= "{%static  'transportapp\images\trucks\T2.jpg'%}" style="width: 100%;height: 500px;"> -->
+        <h2 style="text-align: center; font:  Poppins, sans-serif;font-size: 40px; font-weight: 600;line-height: 48px;color: white;">Online Truck Booking Made Easy</h2>
+        <div class="row">
+        <div class="col-6">
+            <img src="{%static  'transportapp\images\trucks\T40.png'%}" style="height: 450px; width: 650px; margin-top: 90px; margin-left: 50px;">
+        </div>
+     
+        <div class="col-6">
+            <form method="post" action="/fare/" class="needs-validation" onsubmit=" return checkLength()" novalidate>
+                {%csrf_token%}
+        <div style="background-color: white; width: 500px; height: auto; margin-left: 50px;">
+        <h2 style="font:  Poppins, sans-serif;margin-top: 130px; text-align: center;">BOOK TRUCK</h2><br>
+        <div class="form-floating mb-3 col-10" style="margin-left: 40px;">
+        <input type="text" class="form-control" id="pickup" placeholder="" name="pick" required>
+        <label for="pickup">Pickup Location</label>
+        <div class="invalid-feedback">
+            Please enter your Pickup Location.
+          </div>
+        </div>
+        <div class="form-floating col-10" style="margin-left: 40px;">
+        <input type="text" class="form-control" id="drop" placeholder="" name="drop" required>
+        <label for="drop">Drop Location</label>
+        <div class="invalid-feedback">
+            Please enter your Drop Location.
+          </div>
+        </div><br>
+        <div class="form-floating col-10" style="margin-left: 40px;">
+            <input type="number" class="form-control" id="distance" placeholder="" name="distance" required>
+            <label for="distance">Distance(in KM)</label>
+            <div class="invalid-feedback">
+                Please enter your Distance.
+              </div>
+            </div><br>
+        <div class="d-grid col-10" style="margin-left: 40px;">
+        <button type="submit" class="btn mb-3" style="background-color: #004672;color: white;">Check Fare</button>
+        </div>
+        </div>
+        </form>
+    </div>
+    
+    </div>
+    </div>
+    <marquee>
+    {% for obj in offer_key%}
+        <span>{{obj.contents}}  &nbsp;&nbsp;&nbsp;&nbsp;</span>
+    {% endfor %}
+    </marquee>
+    <div style="font: Poppins, sans-serif; margin-left: 100px;margin-right: 100px;text-align: justify;">
+        <h1>Move Masters – India’s most reliable, dedicated and expert online Transport logistics services partner!</h1>
+        <p>Move Masters is one of the foremost trucking companies, delivering the plethora of transport services to its esteemed consumers across India. We are the “best-in-class and cost-effective transporter” as defined by our customers and serving this industry for many years.<br>
+            We have set high standards in every facet of transportation, and strive to keep raising the bar. With our extensive industry knowledge and skilled team, you can completely focus on your core interests whereas leaving the tiring and complex moving process on us.<br>
+            Time-critical? No worries – Move Masters will help you!<br>
+            Our company is equipped with advanced equipment, modern tools, and expertise that enable us to help our consumers with crucial transportation and supply chain solutions. We ensure businesses that they will get excellent-quality, prompt, and secure transportation services irrespective of time-constraint, the heavy load issue, and any other related problem.<br>
+            Being the prime logistics services provider, we believe that people, technology, infrastructure and expertise all work together to help businesses to succeed and henceforth, we are offering the right blend of all these.<br>
+            We are a customer-centric firm and our every action is aimed to offer ease and comfort to them when it comes to booking a truck. Our online truck booking app has tremendously simplified the process of booking a truck. Whether you are looking for the companies of online truck booking Hyderabad or online truck booking Mumbai, Move Masters would always be your right choice.</p>
+            <br>
+            <b>Online Truck Booking- A Smart Trucking Move</b><br>
+            Bored with traditional truck booking practices? Looking for a smart and quick way to book a truck? No worries! We have introduced an innovative and sophisticated way to book trucks. Our online truck booking app and online portal will allow you to book truck online anywhere, anytime.<br>
+            Online transport booking is just a click away! No matter what type and size of your load is, we have the necessary infrastructure, equipment and tools to accommodate your transportation needs. We are a full-service transport company backed by a wide range of tech-enabled trucks, and experienced & skilled team players to offer you best-in-class logistics and supply chain solutions.<br>
+            We offer you an instant pricing option while you try to book a truck using our mobile app. It will give you a better idea to manage your transportation budget.<br><br>
+            <b>A trucking company – always there for you!</b><br>
+            Our safe and affordable transport services will help businesses to drive business growth. We have years of experience in handling different types of transportation projects which enable us to help our businesses to focus on their core competencies and business operations. Our trucking company adds value to businesses at every stage, right from delivering advanced truck booking solutions to time-bound deliveries of goods anywhere across the nation.<br>
+            We are your trusted partner in your digital transformation journey. We have designed our app while keeping your truck booking needs in mind. No matter whether transportation involves short distance or long-distance, we are committed to delivering your goods in a hassle-free, safe and timely manner. How we can help you?<br><br>
+            <b>Rich industry experience</b><br>
+            We bring together years of diverse experience in the transport industry. As the best online transport booking company, we know what all it needs to bring you effective and affordable solutions to suit your every transport need.<br><br>
+            <b>Advanced technology</b><br>
+            Our adoption of technology, proven expertise and a huge network of fleet owners and drivers helps us to serve you anywhere, anytime across any part of the country.<br><br>
+
+            <b>On-time, every time</b><br>
+            We understand the value of time for you as well as for us. That is why we try to deliver your consignment on time, every time.<br><br>
+
+            <b>Competitive pricing</b><br>
+            By designing innovative transport solutions that are targeted to your unique business requirements, we have created a pricing strategy that works for everyone. Cost can become a major constraint while hiring our services, but with our most affordable prices, we won’t let this happen with our clients.<br><br>
+
+            <b> Reliability and safety</b><br>
+            We drive reliability and safety in transport operations through the effective implementation of advanced security tools and technologies. It further helps you to drive efficiency and achieve operational excellence.<br><br>
+
+            <b>Hassle-free services</b><br>
+            We provide hassle-free shipping and flawless logistics solutions for all your Transport needs, whether small or big, to all parts across the country.<br>
+            Are you looking for a reliable and experienced transport company in India? Search online for “local transport near me” or “transport company near me”, we are sure that you will find Move Masters in top results. So, call us now to book our services!
+    </div>
+
+    {%include "transportapp/html/common_footer.html"%}
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+   <script src="{% static 'transportapp/js/validation.js'%}"> </script>
+</body>
+</html>

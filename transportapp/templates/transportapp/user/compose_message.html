@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%include "transportapp/html/common_css.html"%}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    {%include "transportapp/user/user_commonheader.html"%}
+    <form method="post" class="needs-validation" action="/c_message/" novalidate>
+      {%csrf_token%}
+      <div class="col-6" style="padding-left: 50px;">
+        <h2 style="text-align: center;font-family: 'Times New Roman', Times, serif;font-size:40px ;text-align: center; font-weight: 800;">Compose Your Message</h2><hr>
+      <!-- <div class="input-group mb-3  mt-2">
+        <span class="input-group-text"><i class="	far fa-id-badge"></i></span>
+        <div class="form-floating ">
+            <input type="text" class="form-control" id="Username" placeholder="Enter username" name="s_id" required >
+            <label for="Username">Sender Id</label>
+            <div class="invalid-feedback">
+              Please enter your Sender Id.
+            </div>
+        </div>
+    </div> -->
+    <div class="input-group mb-3  mt-2">
+      <span class="input-group-text"><i class="far fa-address-book"></i></span>
+      <div class="form-floating ">
+          <input type="text" class="form-control" id="Username" placeholder="Enter username" name="r_id" required>
+          <label for="Username">Reciever Id</label>
+          <div class="invalid-feedback">
+            Please enter your Reciever Id.
+          </div>
+      </div>
+    </div>
+    <div class="input-group mb-3  mt-2">
+      <span class="input-group-text"><i class="fas fa-edit"></i></span>
+      <div class="form-floating ">
+          <input type="text" class="form-control" id="Username" placeholder="Enter username" name="sub" required>
+          <label for="Username">Subject</label>
+          <div class="invalid-feedback">
+            Please enter your Subject.
+          </div>
+      </div>
+    </div>
+    <div class="input-group mb-3  mt-2">
+      <span class="input-group-text"><i class="far fa-envelope"></i></span>
+      <div class="form-floating ">
+          <input type="text" class="form-control" id="Username" placeholder="Enter username" name="message" required>
+          <label for="Username">Message</label>
+          <div class="invalid-feedback">
+            Please enter your Message.
+          </div>
+      </div>
+  </div>
+  <div class="text-center mx-5 mt-3" style="text-align: center;">
+    <button class="btn" style="height:50px;width:100px ; background-color: #EE7E1A; color: white; font-weight: 700;">Submit</button>
+  </div>
+    </div>
+      </form>
+      <script>
+        {% if messages %}
+           {% for m in messages %}
+                   swal("{{m}}");
+           {%endfor%}
+         {%endif%}
+     </script>
+    {%include "transportapp/html/common_footer.html"%}
+    {%include "transportapp/html/common_js.html"%}
+    <script src="{% static 'transportapp/js/validation.js'%}"> </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%include "transportapp/html/common_css.html"%}
+</head>
+<body>
+    {%include "transportapp/user/user_commonheader.html"%}
+    <div class="col-10" style="padding-left:150px;">  
+<form method="post" action="/booking/">
+  {%csrf_token%}
+  <div class="mt-5" style="background-color: #E6E6E9;">
+    <div class="row">
+      <div class="col-4"><input type="text"  name="pick" value="{{fare_key.pick_up}}">
+        </div>
+        
+      <div class="col-4"><input type="text" name="drop" value="{{fare_key.drop}}">
+        </div>
+    </div>
+    <input type="text" name="distance" value="{{fare_key.distance}}"> 
+
+  </div>
+ 
+  <table class="table table-striped" >
+    <thead>
+      <tr>
+        
+        <th scope="col"style="font-size:35px;">Select</th>
+        <th scope="col"style="font-size:35px;">Truckpic</th>
+        <th scope="col"style="font-size:35px;">Trucktype</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+{% for obj in vehicle_key %}
+
+  <tr>
+    <td><input type="radio" name="rd" value="{{obj.id}}"></td>
+    <td><img src="/media/{{obj.photo}}" height="100px" width="100px"> </td>
+    <td style="font-size:30px;font-family:Times New Roman;">{{obj.truck_type}}</td>
+    <input type="hidden" name="txt{{obj.id}}" value="{{obj.truck_type}}">
+  </tr>
+{% endfor %}
+</tbody>
+</table>
+<select class="form-select" aria-label="Default select example" name="itemtype">
+  <option selected>Open This select menu</option>
+    {% for obj1 in type_key %}
+    <option value="{{obj1.id}}">{{obj1.type}}</option>
+    {% endfor %}
+</select>
+<div class="input-group mb-3 bt-3">
+<div class="form-floating mt-4">
+  <input type="date" class="form-control" id="Usercity" placeholder="Booking Date" name="bookingdate">
+  <label for="btn btn-primary">Booking date</label>
+</div>
+</div>
+<div class="mx-auto mt-4 mb-4" style="padding-left: 750px;">
+  <button class="btn btn-primary" type="submit">Book Now</button>
+</form>
+</div>
+    {%include "transportapp/html/common_footer.html"%}
+    {%include "transportapp/html/common_js.html"%}
+    
+</body>
+</html>

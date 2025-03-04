@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%include "transportapp/html/common_css.html"%}
+    <style>
+      .bg{
+          background-image: url("{%static  'transportapp/images/trucks/home.jpg'%}");
+          width: 100%;height: 700px
+      }
+      .form-control{
+        border:3px solid #E47622;
+      }
+      
+  </style>
+  <script>
+
+    function checkLength()
+    {
+
+       // alert("in function")
+        did=document.getElementById("distance").value
+        //alert(did.length)
+        if(did.length >5)
+        {
+        alert("max 5 digits")
+        return false
+        }
+        return true
+
+    }
+</script>
+</head>
+<body>
+    {%include "transportapp/html/common_header.html"%}
+    <div class="bg">
+      <h2 style="text-align: center; font:  Poppins, sans-serif;font-size: 40px; font-weight: 600;line-height: 48px;color:white;">Check Truck Types & Fare Online</h2>
+      <div class="row">
+       <div class="col-6"> 
+        <img src="{%static  'transportapp\images\trucks\T40.png'%}" style="height: 450px; width: 650px; margin-top: 90px; margin-left: 50px;">
+          </div>
+      <div class="col-5">
+        <form method="post" action="/fare/" onsubmit=" return checkLength()" class="needs-validation" novalidate>
+          {%csrf_token%}
+          <div style=" width: 500px; height: 370px;margin-top: 130px; margin-left: 50px;">
+          <!-- <h2 style="font:  Poppins, sans-serif;margin-top: 130px; text-align: center;">BOOK TRUCK</h2><br> -->
+          <div class="form-floating mb-3 col-10" style="margin-left: 40px;">
+          <input type="text" class="form-control" id="pickup" placeholder="name@example.com" name="pick" required>
+          <label for="pickup">Pickup Location</label>
+          <div class="invalid-feedback">
+            Please enter your Pickup Location.
+          </div>
+          </div>
+          <div class="form-floating col-10" style="margin-left: 40px;">
+          <input type="text" class="form-control" id="drop" placeholder="Password" name="drop" required>
+          <label for="drop">Drop Location</label>
+          <div class="invalid-feedback">
+            Please enter your Drop Location.
+          </div>
+          </div><br>
+          <div class="form-floating col-10" style="margin-left: 40px;">
+              <input type="text" class="form-control" id="distance" placeholder="Password" name="distance" required>
+              <label for="distance">Distance(in KM)</label>
+              <div class="invalid-feedback">
+                Please enter your Distance.
+              </div>
+              </div><br>
+          <div class="d-grid col-10" style="margin-left: 40px;">
+          <button type="Submit" class="btn" style="background-color:#E47622;color: white;">Check Fare</button>
+          </div>
+          </div>
+          </form>
+          </div>
+          </div>
+          </div>
+          <br><br>
+    <h5 style="text-align: center;">Vehicle Dimensions (approx) and Max Load Capacity. ( Size differ as per Make Model of Manufacturer & Custom Modifications )
+    </h5><br>
+        <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" style="background-color: #064B76; color: white;">Truck Type</th>
+            <th scope="col"  style="background-color: #064B76; color: white;">Size(FT)</th>
+            <th scope="col"  style="background-color: #064B76; color: white;">House Hold Capacity</th>
+            <th scope="col"  style="background-color: #064B76; color: white;">Max. Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TATA ACE</td>
+            <td>7 L x 4.8 W x 4.8 H</td>
+            <td>1 BHK</td>
+            <td>@Max Load 850 Kgs</td>
+          </tr>
+          <tr>
+            <td>ASHOK LEYLAND DOST</td>
+            <td>7 L x 4.8 W x 4.8 H</td>
+            <td>1 BHK</td>
+            <td>Max Load 1 Ton</td>
+          </tr>
+          <tr>
+            <td>MAHINDRA BOLERO PICK UP</td>
+            <td>8 L x 4.8 W x 4.8 H</td>
+            <td>1 BHK</td>
+            <td>Max Load 1.5 Ton</td>
+          </tr>
+          <tr>
+            <td>TATA 407</td>
+            <td>9 L x 5.5 W x 5 H</td>
+            <td>1.5 BHK</td>
+            <td>Max Load 2.5 Ton</td>
+          </tr>
+          <tr>
+            <td>EICHER 14 FEET</td>
+            <td>14 L x 6 W x 6.5 H</td>
+            <td>2 BHK</td>
+            <td>Max Load 4 Ton</td>
+          </tr>
+          <tr>
+            <td>EICHER 17 FEET</td>
+            <td>17 L x 6 W x 7 H</td>
+            <td>2.5 BHKr</td>
+            <td>Max Load 5 Ton</td>
+          </tr>
+          <tr>
+            <td>EICHER 19 FEET</td>
+            <td>19 L x 7 W x 7 H</td>
+            <td>2.5 BHK</td>
+            <td>Max Load 7/8/9 Ton</td>
+          </tr>
+          <tr>
+            <td>TATA 22 FEET</td>
+            <td>22 L x 7.5 W x 7 H</td>
+            <td>3 BHK</td>
+            <td>Max Load 10 Ton</td>
+          </tr>
+          <tr>
+            <td>TATA TRUCK (6 TYRE)</td>
+            <td>17.5 L x 7 W x 7 H</td>
+            <td></td>
+            <td>Max Load 9 Ton</td>
+          </tr>
+          <tr>
+            <td>TAURUS 16 T (10 TYRE)</td>
+            <td>21 L x 7.2 W x 7 H</td>
+            <td></td>
+            <td>Max Load 16 Ton</td>
+          </tr>
+          <tr>
+            <td>TAURUS 21 T (12 TYRE)</td>
+            <td>24 L x 7.3 W x 7 H</td>
+            <td></td>
+            <td>Max Load 21 Ton</td>
+          </tr>
+          <tr>
+            <td>TAURUS 25 T (14 TYRE)</td>
+            <td>28 L x 7.8 W x 7 H</td>
+            <td></td>
+            <td>Max Load 25 Ton</td>
+          </tr>
+          <tr>
+            <td>CONTAINER 20 FT</td>
+            <td>20 L x 8 W x 8 H</td>
+            <td>4 BHK</td>
+            <td>Max Load 6.5 Ton</td>
+          </tr>
+          <tr>
+            <td>CONTAINER 32 FT SXL</td>
+            <td>32 L x 8 W x 8 H</td>
+            <td>5 BHK</td>
+            <td>Max Load 7 Ton</td>
+          </tr>
+          <tr>
+            <td>CONTAINER 32 FT MXL</td>
+            <td>32 L x 8 W x 8 H</td>
+            <td></td>
+            <td>Max Load 14 Ton</td>
+          </tr>
+          <tr>
+            <td>CONTAINER 32 FT SXL / MXL HQ</td>
+            <td>32 L x 8 W x 10 H</td>
+            <td></td>
+            <td>Max Load 7 / 14 Ton</td>
+          </tr>
+          <tr>
+            <td>20 FEET OPEN ALL SIDE (ODC)			</td>
+            <td>20 L x 8 W x 8 H</td>
+            <td></td>
+            <td>Max Load 7 Ton</td>
+          </tr>
+          <tr>
+            <td>28-32 FEET OPEN-TRAILOR JCB ODC</td>
+            <td>28-32 L X 8 W x 8 H</td>
+            <td></td>
+            <td>Max Load 8 Ton</td>
+          </tr>
+          <tr>
+            <td>32 FEET OPEN-TRAILOR ODC</td>
+            <td>32 L X 8 W x 8 H</td>
+            <td></td>
+            <td>Max Load 25 Ton</td>
+          </tr>
+          <tr>
+            <td>40 FEET OPEN-TRAILOR ODC</td>
+            <td>40 L X 8 W x 8 H</td>
+            <td></td>
+            <td>Max Load 32 Ton</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </table>
+    {%include "transportapp/html/common_footer.html"%}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="{% static 'transportapp/js/validation.js'%}"> </script>
+</body>
+</html>

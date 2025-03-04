@@ -1,0 +1,54 @@
+{%load static%}
+<title>Move Masters</title>
+<style>
+.nav-link{
+color: black !important;
+font:Poppins, sans-serif;
+font-weight: 500;
+font-size: 20px;
+}
+.dropdown-item{
+  color: black !important;
+  font-size: 20px;
+}
+a:hover{
+  color: brown !important;;
+}
+</style>
+<nav class="navbar navbar-expand-lg sticky-top" style="background-color: white;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="{%static 'transportapp/images/Logo.png' %}" alt="Cinque Terre" width="60px" height="50px"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="margin-right: 100px;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{'/'}}"><i class="fas fa-home"></i></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Profile
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{'/edit_profile/'}}">Edit</a></li>
+            <li><a class="dropdown-item" href="{{'/view_profile/'}}">View</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Message
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{'/c_message/'}}">Compose</a></li>
+            <li><a class="dropdown-item" href="{{'/inbox/'}}">Inbox</a></li>
+            <li><a class="dropdown-item" href="{{'/sent/'}}">Sent</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{'/user_logout/'}}">Logout</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+</nav>

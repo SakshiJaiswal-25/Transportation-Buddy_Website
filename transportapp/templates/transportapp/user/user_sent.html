@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%include "transportapp/html/common_css.html"%}
+</head>
+<body>
+    {%include "transportapp/user/user_commonheader.html"%}
+    <form method="post" action="/delete_sent/">
+        {%csrf_token%}
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Select</th>
+            <th scope="col">Receiver Id</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Date</th>
+            <th scope="col">Message</th>
+          </tr>
+        </thead>
+        <tbody>
+            {%for m in msg_key%}
+                <tr>
+                    <td><input type="checkbox" name="checkmsg" value="{{m.id}}"></td>
+                    <td>{{m.receiver_id}}</td>
+                    <td>{{m.subject}}</td>
+                    <td>{{m.date}}</td>
+                    <td>{{m.message}}</td>
+                </tr>
+            {%endfor%}
+        </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Delete</button>
+        </form>
+    {%include "transportapp/html/common_footer.html"%}
+    {%include "transportapp/html/common_js.html"%}
+</body>
+</html>
